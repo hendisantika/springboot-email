@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.mail.MessagingException;
+import java.io.FileNotFoundException;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : springboot-email
@@ -43,5 +46,21 @@ public class EmailController {
         }
 
         return new ResponseEntity<>("Please check your inbox", HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/simple-order-email/{user-email}")
+    public @ResponseBody
+    ResponseEntity<String> sendEmailAttachment(@PathVariable("user-email") String email) {
+
+        try {
+            emailService.sendEmailWithAttachment(email, "Order Confirmation", "Thanks for your recent order",
+                    "classpath:purchase_order.pdf");
+        } catch (MessagingException | FileNotFoundException mailException) {
+            LOG.error("Error while sending out email..{}", mailException.getStackTrace());
+            LOG.error("Error while sending out email..{}", mailException.fillInStackTrace());
+            return new ResponseEntity<>("Unable to send email", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>("Please check your inbox for order confirmation", HttpStatus.OK);
     }
 }
