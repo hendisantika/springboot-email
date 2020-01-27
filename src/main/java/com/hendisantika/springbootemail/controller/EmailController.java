@@ -38,7 +38,7 @@ public class EmailController {
     ResponseEntity<String> sendSimpleEmail(@PathVariable("user-email") String email) {
 
         try {
-            emailService.sendSimpleEmail(email, "Welcome", "This is a welcome email for your!!");
+            emailService.sendSimpleEmail(email, "Welcome", "This is a welcome email for you!!");
         } catch (MailException mailException) {
             LOG.error("Error while sending out email..{}", mailException.getStackTrace());
             LOG.error("Error while sending out email..{}", mailException.fillInStackTrace());
@@ -54,7 +54,7 @@ public class EmailController {
 
         try {
             emailService.sendEmailWithAttachment(email, "Order Confirmation", "Thanks for your recent order",
-                    "classpath:mustache.jpeg");
+                    "classpath:purchase_order.pdf");
         } catch (MessagingException | FileNotFoundException mailException) {
             LOG.error("Error while sending out email..{}", mailException.getStackTrace());
             LOG.error("Error while sending out email..{}", mailException.fillInStackTrace());
