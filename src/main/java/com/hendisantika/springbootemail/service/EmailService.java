@@ -1,5 +1,8 @@
 package com.hendisantika.springbootemail.service;
 
+import javax.mail.MessagingException;
+import java.io.FileNotFoundException;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : springboot-email
@@ -12,6 +15,7 @@ package com.hendisantika.springbootemail.service;
 public interface EmailService {
 
     void sendSimpleEmail(final String toAddress, final String subject, final String message);
-//    void sendEmailWithAttachment(final String toAddress, final String subject, final String message, final String
-//    attachment) throws MessagingException, FileNotFoundException;
+
+    void sendEmailWithAttachment(final String toAddress, final String subject, final String message, final String
+            attachment) throws MessagingException, FileNotFoundException;
 }
