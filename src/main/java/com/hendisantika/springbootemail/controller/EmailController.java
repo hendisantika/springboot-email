@@ -54,7 +54,7 @@ public class EmailController {
 
         try {
             emailService.sendEmailWithAttachment(email, "Order Confirmation", "Thanks for your recent order",
-                    "classpath:purchase_order.pdf");
+                    "classpath:mustache.jpeg");
         } catch (MessagingException | FileNotFoundException mailException) {
             LOG.error("Error while sending out email..{}", mailException.getStackTrace());
             LOG.error("Error while sending out email..{}", mailException.fillInStackTrace());
