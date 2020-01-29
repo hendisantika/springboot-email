@@ -39,6 +39,7 @@ public class EmailController {
 
         try {
             emailService.sendSimpleEmail(email, "Welcome", "This is a welcome email for you!!");
+            LOG.info("Email already sent! Please check your inbox for order confirmation!");
         } catch (MailException mailException) {
             LOG.error("Error while sending out email..{}", mailException.getStackTrace());
             LOG.error("Error while sending out email..{}", mailException.fillInStackTrace());
@@ -55,6 +56,7 @@ public class EmailController {
         try {
             emailService.sendEmailWithAttachment(email, "Order Confirmation", "Thanks for your recent order",
                     "classpath:purchase_order.pdf");
+            LOG.info("Email already sent! Please check your inbox for order confirmation!");
         } catch (MessagingException | FileNotFoundException mailException) {
             LOG.error("Error while sending out email..{}", mailException.getStackTrace());
             LOG.error("Error while sending out email..{}", mailException.fillInStackTrace());
