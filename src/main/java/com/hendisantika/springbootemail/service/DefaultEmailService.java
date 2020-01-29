@@ -1,7 +1,6 @@
 package com.hendisantika.springbootemail.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -10,6 +9,7 @@ import org.springframework.util.ResourceUtils;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
@@ -42,7 +42,8 @@ public class DefaultEmailService implements EmailService {
         messageHelper.setTo(toAddress);
         messageHelper.setSubject(subject);
         messageHelper.setText(message);
-        FileSystemResource file = new FileSystemResource(ResourceUtils.getFile(attachment));
+//        FileSystemResource file = new FileSystemResource(ResourceUtils.getFile(attachment));
+        File file = ResourceUtils.getFile(attachment);
         messageHelper.addAttachment("Purchase Order", file);
         emailSender.send(mimeMessage);
     }
