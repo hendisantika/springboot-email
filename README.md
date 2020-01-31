@@ -6,3 +6,14 @@
 3. Set your email password in `application.properties`.
 4. Run the application: `mvn clean spring-boot:run`.
 
+## Example Request:
+**Send Email Without Attachment**
+```
+curl http://localhost:8080/email/simple-email/hendisantika@yahoo.co.id
+```
+
+**Send Email With Attachment**
+```
+curl http://localhost:8080/email/simple-order-email/hendisantika@yahoo.co.id
+```
+
