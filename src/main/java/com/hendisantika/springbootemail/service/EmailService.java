@@ -2,6 +2,7 @@ package com.hendisantika.springbootemail.service;
 
 import javax.mail.MessagingException;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,5 +18,5 @@ public interface EmailService {
     void sendSimpleEmail(final String toAddress, final String subject, final String message);
 
     void sendEmailWithAttachment(final String toAddress, final String subject, final String message, final String
-            attachment) throws MessagingException, FileNotFoundException;
+            attachment) throws MessagingException, FileNotFoundException, UnsupportedEncodingException;
 }

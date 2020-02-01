@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -57,7 +58,7 @@ public class EmailController {
             emailService.sendEmailWithAttachment(email, "Order Confirmation", "Thanks for your recent order",
                     "classpath:purchase_order.pdf");
             LOG.info("Email already sent! Please check your inbox for order confirmation!");
-        } catch (MessagingException | FileNotFoundException mailException) {
+        } catch (MessagingException | FileNotFoundException | UnsupportedEncodingException mailException) {
             LOG.error("Error while sending out email..{}", mailException.getStackTrace());
             LOG.error("Error while sending out email..{}", mailException.fillInStackTrace());
             return new ResponseEntity<>("Unable to send email", HttpStatus.INTERNAL_SERVER_ERROR);
