@@ -1,6 +1,7 @@
 package com.hendisantika.springbootemail.service;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
+
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 
