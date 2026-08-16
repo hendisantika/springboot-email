@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+		"name": "Spring Boot Email API",
+		"description": "API collection for sending emails using Spring Boot and Brevo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "Send Simple Email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/email/simple-email/{{recipient_email}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"email",
+						"simple-email",
+						"{{recipient_email}}"
+					]
+				},
+				"description": "Sends a simple welcome email to the specified recipient"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Order Confirmation Email with Attachment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/email/simple-order-email/{{recipient_email}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"email",
+						"simple-order-email",
+						"{{recipient_email}}"
+					]
+				},
+				"description": "Sends an order confirmation email with a PDF attachment from classpath"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email with File Attachments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "to",
+							"value": "{{recipient_email}}",
+							"description": "Recipient email address",
+							"type": "text"
+						},
+						{
+							"key": "subject",
+							"value": "Test Email with Attachments",
+							"description": "Email subject",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "This is a test email with file attachments. Please find the attached documents.",
+							"description": "Email message body",
+							"type": "text"
+						},
+						{
+							"key": "attachments",
+							"description": "File attachment (you can add multiple files by duplicating this field)",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/email/send-with-attachments",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"email",
+						"send-with-attachments"
+					]
+				},
+				"description": "Sends an email with one or more file attachments. To add multiple files, add additional 'attachments' fields in the form-data."
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email with Multiple Attachments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "to",
+							"value": "{{recipient_email}}",
+							"description": "Recipient email address",
+							"type": "text"
+						},
+						{
+							"key": "subject",
+							"value": "Invoice and Documents",
+							"description": "Email subject",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "Dear Customer,\n\nPlease find attached your invoice and related documents.\n\nBest regards,\nThe Team",
+							"description": "Email message body",
+							"type": "text"
+						},
+						{
+							"key": "attachments",
+							"description": "First file attachment",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "attachments",
+							"description": "Second file attachment",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "attachments",
+							"description": "Third file attachment (optional)",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/email/send-with-attachments",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"email",
+						"send-with-attachments"
+					]
+				},
+				"description": "Example showing how to send an email with multiple file attachments"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email without Attachments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "to",
+							"value": "{{recipient_email}}",
+							"description": "Recipient email address",
+							"type": "text"
+						},
+						{
+							"key": "subject",
+							"value": "Important Notification",
+							"description": "Email subject",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "Hello,\n\nThis is an important notification message.\n\nThank you!",
+							"description": "Email message body",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/email/send-with-attachments",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"email",
+						"send-with-attachments"
+					]
+				},
+				"description": "Sends an email without any attachments using the POST endpoint"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "recipient_email",
+			"value": "hendisantika@gmail.com",
+			"type": "string"
+		}
+	]
+}
