@@ -12,13 +12,13 @@ Send transactional email via the [Brevo](https://www.brevo.com/) HTTP API, built
 
 1. Clone this repository: `git clone https://github.com/hendisantika/springboot-email.git`.
 2. Go to your folder: `cd springboot-email`.
-3. Configure your Brevo credentials in `src/main/resources/application.properties`:
-   ```properties
-   brevo.api.key=your-brevo-api-key
-   brevo.api.url=https://api.brevo.com/v3/smtp/email
-   brevo.sender.email=your-verified-sender@example.com
-   brevo.sender.name=Your Name
+3. Configure your Brevo credentials as environment variables (read by `application.properties`):
+   ```bash
+   export BREVO_API_KEY=your-brevo-api-key
+   export BREVO_SENDER_EMAIL=your-verified-sender@example.com   # optional, has a default
+   export BREVO_SENDER_NAME="Your Name"                         # optional, has a default
    ```
+   `BREVO_API_KEY` is required — the app fails to start if it isn't set. `BREVO_API_URL` and `SERVER_PORT` are also overridable the same way, but have working defaults.
 4. Run the application: `./mvnw spring-boot:run`.
 
 The app starts on `http://localhost:8080` by default (configurable via `server.port`).
