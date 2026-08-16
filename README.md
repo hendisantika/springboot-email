@@ -18,7 +18,7 @@ Send transactional email via the [Brevo](https://www.brevo.com/) HTTP API, built
    export BREVO_SENDER_EMAIL=your-verified-sender@example.com   # optional, has a default
    export BREVO_SENDER_NAME="Your Name"                         # optional, has a default
    ```
-   `BREVO_API_KEY` is required — the app fails to start if it isn't set. `BREVO_API_URL` and `SERVER_PORT` are also overridable the same way, but have working defaults.
+   `BREVO_API_KEY` has no default — if you leave it unset the app still starts, but every send request will fail with a 401 from Brevo. `BREVO_API_URL` and `SERVER_PORT` are also overridable the same way, but have working defaults.
 4. Run the application: `./mvnw spring-boot:run`.
 
 The app starts on `http://localhost:8080` by default (configurable via `server.port`).
