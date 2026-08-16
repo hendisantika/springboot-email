@@ -1,9 +1,9 @@
 package com.hendisantika.springbootemail.service;
 
-import jakarta.mail.MessagingException;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,5 +19,8 @@ public interface EmailService {
     void sendSimpleEmail(final String toAddress, final String subject, final String message);
 
     void sendEmailWithAttachment(final String toAddress, final String subject, final String message, final String
-            attachment) throws MessagingException, FileNotFoundException, UnsupportedEncodingException;
+            attachment) throws FileNotFoundException;
+
+    void sendEmailWithAttachments(final String toAddress, final String subject, final String message,
+                                   final List<MultipartFile> attachments);
 }
